@@ -1,185 +1,199 @@
 :root {
-    --green: #4caf50;
-    --red: #f44336;
-    --yellow: #ffeb3b;
-    --blue: #2196f3;
-    --bg: #23272f;
-    --panel: #2a2f37;
-    --white: #fff;
-    --gray: #bdbdbd;
-    --accent: #ff9800;
-    --radius: 16px;
-    --shadow: 0 4px 24px #0008;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --yellow: #f1c40f;
+  --blue: #2980b9;
+  --dark: #181c24;
+  --panel: #212838;
+  --white: #fff;
+  --shadow: 0 4px 30px rgba(0,0,0,0.12);
+  --radius: 16px;
+  --border: 3px solid #111;
 }
-html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    min-height: 100vh;
+
+* {
+  box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #292e49 0%, #536976 100%);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  min-height: 100vh;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
 header {
-    background: var(--panel);
-    padding: 24px 0 10px 0;
-    box-shadow: var(--shadow);
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
 }
+
 header h1 {
-    margin: 0;
-    font-size: 2.2rem;
-    letter-spacing: 3px;
-    color: var(--accent);
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 1px 3px 18px #1118;
 }
-#user-profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin: 10px 0;
+
+header p {
+  color: #f1c40f;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
-#user-profile img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-}
-#logout-btn {
-    background: var(--red);
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius);
-    padding: 7px 28px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background 0.2s;
-}
-#logout-btn:hover { background: #c62828; }
+
 main {
-    max-width: 650px;
-    margin: 36px auto;
-    background: var(--panel);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 32px 18px 28px 18px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-section {
-    margin-bottom: 26px;
+
+.genius-container {
+  background: var(--panel);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 410px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.genius-board {
-    display: grid;
-    grid-template-columns: 120px 120px;
-    grid-template-rows: 120px 120px;
-    gap: 22px;
-    margin: 34px auto 14px auto;
-    width: 270px;
-    justify-content: center;
+
+#genius-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+  width: 320px;
+  height: 320px;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  background: #2228;
+  box-shadow: 0 0 24px #000c;
+  border: 5px solid #181c24;
 }
+
 .color-btn {
-    border-radius: 28px;
-    border: 4px solid #222;
-    box-shadow: 0 2px 16px #0005;
-    width: 120px;
-    height: 120px;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.2s, transform 0.2s;
-    outline: none;
+  width: 140px;
+  height: 140px;
+  border-radius: 32% 68% 60% 40% / 48% 38% 62% 52%;
+  border: var(--border);
+  box-shadow: 0 4px 14px #0006;
+  opacity: 0.92;
+  cursor: pointer;
+  transition: filter 0.18s, box-shadow 0.12s, opacity 0.18s;
 }
-.color-btn:active, .color-btn.active {
-    opacity: 1;
-    transform: scale(1.07);
-    box-shadow: 0 0 36px #fff5;
+
+.color-btn.green { background: linear-gradient(135deg, var(--green), #43e97b); }
+.color-btn.red { background: linear-gradient(135deg, var(--red), #eb5757); }
+.color-btn.yellow { background: linear-gradient(135deg, var(--yellow), #ffecb3); }
+.color-btn.blue { background: linear-gradient(135deg, var(--blue), #74ebd5); }
+
+.color-btn.active {
+  filter: brightness(1.5) drop-shadow(0 0 18px #fff8);
+  box-shadow: 0 0 24px 8px #fff2;
+  opacity: 1;
 }
-.color-btn.green  { background: linear-gradient(135deg, var(--green), #66bb6a 80%); }
-.color-btn.red    { background: linear-gradient(135deg, var(--red), #e57373 80%); }
-.color-btn.yellow { background: linear-gradient(135deg, var(--yellow), #fff176 80%); }
-.color-btn.blue   { background: linear-gradient(135deg, var(--blue), #64b5f6 80%); }
-#game-message {
-    margin: 22px 0 12px 0;
-    font-size: 1.2rem;
-    min-height: 24px;
-    color: var(--accent);
-    text-align: center;
+
+.controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 12px;
 }
-#scoreboard {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    margin: 10px 0 14px 0;
+
+#start-btn {
+  background: linear-gradient(90deg, #f1c40f 60%, #f39c12 100%);
+  color: #181c24;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px #0004;
+  transition: background 0.18s, box-shadow 0.12s;
 }
-#players-info {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 8px;
+#start-btn:active {
+  background: linear-gradient(90deg, #f39c12 60%, #f1c40f 100%);
+  box-shadow: 0 1px 2px #0008;
 }
-#players-info .player {
-    text-align: center;
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: #1e232b;
-    box-shadow: 0 1px 6px #0003;
+
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 1rem;
+  background: #161c28e0;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  min-width: 110px;
+  box-shadow: 0 2px 6px #0006;
 }
-#players-info .player.active {
-    border: 2px solid var(--accent);
+
+.info-panel span:first-child {
+  color: #f1c40f;
+  font-weight: bold;
+  margin-right: 0.2rem;
 }
-#players-info img {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    margin-bottom: 4px;
+
+#msg {
+  margin-top: 18px;
+  font-size: 1.15rem;
+  min-height: 2.2em;
+  text-align: center;
+  color: #ffecb3;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 4px #222c;
 }
-#queue-section, #ranking-section {
-    text-align: center;
-}
-#queue-status {
-    margin: 14px 0;
-    font-size: 1.08rem;
-}
-#ranking-list {
-    margin: 0 auto;
-    padding-left: 0;
-    max-width: 350px;
-    text-align: left;
-}
-#ranking-list li {
-    background: #1e232b;
-    margin-bottom: 7px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    list-style: decimal inside;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    font-size: 1.06rem;
-}
-#ranking-list img {
-    width: 28px;
-    border-radius: 50%;
-}
+
 footer {
-    text-align: center;
-    margin: 50px 0 10px 0;
-    color: var(--gray);
-    font-size: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #ccc;
+  padding: 1.4rem 0 0.6rem;
+  background: none;
+  letter-spacing: 0.1em;
 }
-.hidden { display: none !important; }
-@media (max-width: 520px) {
-    .genius-board {
-        grid-template-columns: 70px 70px;
-        grid-template-rows: 70px 70px;
-        width: 170px;
-        gap: 10px;
-    }
-    .color-btn {
-        width: 70px;
-        height: 70px;
-    }
-    main { padding: 15px 1vw 12px 1vw; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .genius-container {
+    max-width: 95vw;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  #genius-board {
+    width: 90vw;
+    height: 90vw;
+    max-width: 270px;
+    max-height: 270px;
+    gap: 10px;
+  }
+  .color-btn {
+    width: 38vw;
+    height: 38vw;
+    min-width: 90px;
+    min-height: 90px;
+    max-width: 120px;
+    max-height: 120px;
+  }
+  .controls {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+  }
+  .info-panel {
+    min-width: 90px;
+    font-size: 0.98rem;
+    padding: 0.5rem 0.5rem;
+  }
 }

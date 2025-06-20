@@ -1,44 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Genius Multiplayer - Profissional</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genius Profissional</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Genius Multiplayer</h1>
-        <div id="user-profile" class="hidden"></div>
-        <div id="google-login"></div>
-        <button id="logout-btn" class="hidden">Sair</button>
-    </header>
-    <main>
-        <section id="queue-section" class="hidden">
-            <h2>Fila de Espera</h2>
-            <div id="queue-status"></div>
-        </section>
-        <section id="game-section" class="hidden">
-            <div id="players-info"></div>
-            <div class="genius-board" id="genius-board">
-                <button class="color-btn green" data-color="green"></button>
-                <button class="color-btn red" data-color="red"></button>
-                <button class="color-btn yellow" data-color="yellow"></button>
-                <button class="color-btn blue" data-color="blue"></button>
-            </div>
-            <div id="game-message"></div>
-            <div id="scoreboard"></div>
-            <button id="leave-game-btn" class="hidden">Sair da Partida</button>
-        </section>
-        <section id="ranking-section" class="hidden">
-            <h2>Ranking Geral</h2>
-            <ol id="ranking-list"></ol>
-        </section>
-    </main>
-    <footer>
-        <p>Feito por um dev profissional &copy; 2025</p>
-    </footer>
-    <script src="script.js"></script>
+  <header>
+    <h1>Genius Profissional</h1>
+    <p>Teste sua memória e desafie os seus limites!</p>
+  </header>
+  <main>
+    <div class="genius-container">
+      <div id="genius-board">
+        <div class="color-btn green" data-color="green"></div>
+        <div class="color-btn red" data-color="red"></div>
+        <div class="color-btn yellow" data-color="yellow"></div>
+        <div class="color-btn blue" data-color="blue"></div>
+      </div>
+      <section class="controls">
+        <button id="start-btn">Iniciar Jogo</button>
+        <div class="info-panel">
+          <div><span>Nível:</span> <span id="level">0</span></div>
+          <div><span>Pontuação:</span> <span id="score">0</span></div>
+          <div><span>Melhor:</span> <span id="high-score">0</span></div>
+        </div>
+      </section>
+      <div id="msg"></div>
+    </div>
+  </main>
+  <footer>
+    <p>Desenvolvido por <strong>Matheuscomputerbeat</strong> &copy; 2025</p>
+  </footer>
+  <audio id="sound-green" src="sounds/green.mp3"></audio>
+  <audio id="sound-red" src="sounds/red.mp3"></audio>
+  <audio id="sound-yellow" src="sounds/yellow.mp3"></audio>
+  <audio id="sound-blue" src="sounds/blue.mp3"></audio>
+  <audio id="sound-wrong" src="sounds/wrong.mp3"></audio>
+  <script src="script.js"></script>
 </body>
 </html>
