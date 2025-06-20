@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Genius Multiplayer - Profissional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <header>
+        <h1>Genius Multiplayer</h1>
+        <div id="user-profile" class="hidden"></div>
+        <div id="google-login"></div>
+        <button id="logout-btn" class="hidden">Sair</button>
+    </header>
+    <main>
+        <section id="queue-section" class="hidden">
+            <h2>Fila de Espera</h2>
+            <div id="queue-status"></div>
+        </section>
+        <section id="game-section" class="hidden">
+            <div id="players-info"></div>
+            <div class="genius-board" id="genius-board">
+                <button class="color-btn green" data-color="green"></button>
+                <button class="color-btn red" data-color="red"></button>
+                <button class="color-btn yellow" data-color="yellow"></button>
+                <button class="color-btn blue" data-color="blue"></button>
+            </div>
+            <div id="game-message"></div>
+            <div id="scoreboard"></div>
+            <button id="leave-game-btn" class="hidden">Sair da Partida</button>
+        </section>
+        <section id="ranking-section" class="hidden">
+            <h2>Ranking Geral</h2>
+            <ol id="ranking-list"></ol>
+        </section>
+    </main>
+    <footer>
+        <p>Feito por um dev profissional &copy; 2025</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
