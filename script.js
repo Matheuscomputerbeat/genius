@@ -1,14 +1,7 @@
-// Genius Profissional - Matheuscomputerbeat
+// Genius Profissional - Áudio gerado via Web Audio API
 
 const colors = ['green', 'red', 'yellow', 'blue'];
-const colorSounds = {
-  green: document.getElementById('sound-green'),
-  red: document.getElementById('sound-red'),
-  yellow: document.getElementById('sound-yellow'),
-  blue: document.getElementById('sound-blue'),
-  wrong: document.getElementById('sound-wrong')
-};
-
+const colorFreq = { green: 329, red: 220, yellow: 440, blue: 554, wrong: 110 };
 let sequence = [];
 let userSequence = [];
 let level = 0;
@@ -24,6 +17,27 @@ const scoreDisplay = document.getElementById('score');
 const highScoreDisplay = document.getElementById('high-score');
 const msg = document.getElementById('msg');
 
+// Função para gerar áudio
+function playSound(color, duration = 340) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = color === 'wrong' ? 'sawtooth' : 'sine';
+    o.frequency.value = colorFreq[color] || 300;
+    g.gain.value = color === 'wrong' ? 0.25 : 0.14;
+    o.connect(g).connect(ctx.destination);
+    o.start();
+    if (color === 'wrong') {
+      g.gain.linearRampToValueAtTime(0, ctx.currentTime + duration / 900);
+    }
+    setTimeout(() => {
+      o.stop();
+      ctx.close();
+    }, duration);
+  } catch (e) {}
+}
+
 function updateStatus() {
   levelDisplay.textContent = level;
   scoreDisplay.textContent = score;
@@ -33,13 +47,6 @@ function updateStatus() {
 function setMessage(message, color = '#ffecb3') {
   msg.textContent = message;
   msg.style.color = color;
-}
-
-function playSound(color) {
-  if (colorSounds[color]) {
-    colorSounds[color].currentTime = 0;
-    colorSounds[color].play();
-  }
 }
 
 function animateBtn(color) {
@@ -86,7 +93,7 @@ function handleColorClick(e) {
 
   // Checagem
   if (color !== sequence[userSequence.length - 1]) {
-    playSound('wrong');
+    playSound('wrong', 500);
     setMessage('Errou! Fim de Jogo.', '#f66');
     playing = false;
     canClick = false;
@@ -123,7 +130,7 @@ function startGame() {
 board.addEventListener('click', handleColorClick);
 startBtn.addEventListener('click', startGame);
 
-// Toque também no teclado!
+// Teclas Q, W, A, S
 document.addEventListener('keydown', e => {
   if (!playing || !canClick) return;
   const keyMap = { q: 'green', w: 'red', a: 'yellow', s: 'blue' };
